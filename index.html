@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>العربي فيرنتشر | EL3RBY FURNITURE — أثاث يصنع المكان</title>
+<meta name="description" content="العربي فيرنتشر — أثاث مصري فاخر بتصميم راقٍ وجودة تدوم. غرف معيشة، نوم، سفرة، أثاث مكتبي، وتصميم مساحات." />
+<meta property="og:title" content="EL3RBY FURNITURE — أثاث يصنع المكان" />
+<meta property="og:description" content="تصميم راقٍ. جودة تدوم. تفاصيل تصنع الفرق." />
+<meta property="og:image" content="https://i.ibb.co/xtJRN3MH/554472398-122212388162563338-9203200651715817132-n.jpg" />
+<meta property="og:type" content="website" />
+<link rel="icon" href="https://i.ibb.co/xtJRN3MH/554472398-122212388162563338-9203200651715817132-n.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+:root{
+  --walnut:#6b4423;
+  --walnut-dark:#4a2f18;
+  --brown:#3b2415;
+  --cream:#f7f1e8;
+  --ivory:#fffaf2;
+  --sand:#e8dcc8;
+  --beige:#d9c9ae;
+  --charcoal:#2a2622;
+  --bronze:#b08554;
+  --bronze-soft:#c9a374;
+  --line:#e6dccb;
+  --muted:#8a7a66;
+  --white:#fff;
+  --radius:14px;
+  --radius-sm:8px;
+  --shadow-sm:0 2px 8px rgba(60,40,20,.05);
+  --shadow-md:0 10px 30px rgba(60,40,20,.08);
+  --shadow-lg:0 24px 60px rgba(60,40,20,.12);
+  --font-ar:'Cairo',system-ui,sans-serif;
+  --font-en:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--ivory);color:var(--charcoal);font-family:var(--font-ar);line-height:1.6;-webkit-font-smoothing:antialiased}
+html[dir="ltr"] body{font-family:var(--font-en)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.container{max-width:1280px;margin:0 auto;padding:0 24px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+/* ---------- Top bar ---------- */
+.topbar{background:var(--charcoal);color:var(--cream);font-size:.82rem;padding:8px 0}
+.topbar .container{display:flex;justify-content:space-between;gap:16px;align-items:center}
+.topbar a{opacity:.85}
+.topbar a:hover{opacity:1;color:var(--bronze-soft)}
+
+/* ---------- Header ---------- */
+.site-header{position:sticky;top:0;z-index:80;background:var(--ivory);border-bottom:1px solid var(--line);backdrop-filter:saturate(1.1) blur(6px)}
+.site-header .bar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 0}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:56px;height:56px;object-fit:cover;border-radius:50%;border:1px solid var(--line);background:var(--white)}
+.brand-text{line-height:1.15}
+.brand-text strong{display:block;font-weight:800;letter-spacing:.3px;color:var(--walnut-dark);font-size:1.05rem}
+.brand-text span{display:block;font-size:.75rem;color:var(--muted)}
+
+.nav{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.nav a{font-size:.95rem;font-weight:600;color:var(--charcoal);padding:6px 2px;position:relative;transition:color .2s}
+.nav a:hover,.nav a.active{color:var(--walnut)}
+.nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--bronze);border-radius:2px}
+
+.actions{display:flex;align-items:center;gap:10px}
+.icon-btn{width:40px;height:40px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--white);border:1px solid var(--line);color:var(--walnut-dark);transition:all .2s;position:relative}
+.icon-btn:hover{border-color:var(--bronze);color:var(--bronze)}
+.icon-btn .badge{position:absolute;top:-4px;inset-inline-end:-4px;background:var(--walnut);color:#fff;font-size:.7rem;min-width:18px;height:18px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;font-weight:700}
+.lang-toggle{display:inline-flex;background:var(--white);border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang-toggle button{padding:6px 12px;font-size:.8rem;font-weight:700;color:var(--muted)}
+.lang-toggle button.active{background:var(--walnut);color:#fff}
+
+.menu-toggle{display:none}
+
+/* ---------- Hero ---------- */
+.hero{padding:64px 0 72px;background:linear-gradient(180deg,#faf5ec 0%,var(--ivory) 100%);border-bottom:1px solid var(--line)}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.2rem,4.2vw,3.4rem);font-weight:800;line-height:1.15;color:var(--walnut-dark);letter-spacing:-.5px}
+.hero h1 em{font-style:normal;color:var(--bronze);position:relative}
+.hero p.lead{margin-top:18px;font-size:1.08rem;color:var(--muted);max-width:52ch}
+.hero-cta{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:.95rem;transition:transform .15s,background .2s,color .2s,border-color .2s}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--walnut);color:#fff}
+.btn-primary:hover{background:var(--walnut-dark)}
+.btn-ghost{background:transparent;border:1.5px solid var(--walnut);color:var(--walnut-dark)}
+.btn-ghost:hover{background:var(--walnut);color:#fff}
+.hero-visual{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/3;background:var(--sand)}
+.hero-visual img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- Sections ---------- */
+.section{padding:72px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:36px;flex-wrap:wrap}
+.section-head h2{font-size:clamp(1.6rem,2.4vw,2.1rem);font-weight:800;color:var(--walnut-dark);letter-spacing:-.3px}
+.section-head .eyebrow{display:block;color:var(--bronze);font-weight:700;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.section-head p{color:var(--muted);max-width:60ch;margin-top:6px}
+
+/* ---------- Category tiles ---------- */
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:18px}
+.cat{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--sand);aspect-ratio:1/1;box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .25s;display:block}
+.cat:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.cat img{width:100%;height:100%;object-fit:cover}
+.cat span{position:absolute;inset:auto 0 0 0;padding:14px;background:linear-gradient(transparent,rgba(30,20,10,.8));color:#fff;font-weight:700;font-size:.98rem}
+
+/* ---------- Product grid ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,border-color .2s;position:relative}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--beige)}
+.card .media{aspect-ratio:1/1;background:var(--sand);overflow:hidden;position:relative}
+.card .media img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .media img{transform:scale(1.04)}
+.card .media .tag{position:absolute;top:12px;inset-inline-start:12px;background:var(--bronze);color:#fff;font-size:.72rem;font-weight:700;padding:5px 10px;border-radius:999px;letter-spacing:.5px}
+.card .quick{position:absolute;top:12px;inset-inline-end:12px;display:flex;flex-direction:column;gap:6px;opacity:0;transform:translateY(-6px);transition:all .25s}
+.card:hover .quick{opacity:1;transform:translateY(0)}
+.card .quick button{width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--walnut-dark);box-shadow:var(--shadow-sm)}
+.card .quick button:hover{background:var(--walnut);color:#fff;border-color:var(--walnut)}
+.card .body{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card .cat-name{font-size:.74rem;color:var(--bronze);font-weight:700;letter-spacing:1.4px;text-transform:uppercase}
+.card h3{font-size:1rem;font-weight:700;color:var(--charcoal);line-height:1.35;min-height:2.6em}
+.card .price{display:flex;align-items:baseline;gap:8px;margin-top:auto}
+.card .price .now{font-size:1.15rem;font-weight:800;color:var(--walnut-dark)}
+.card .price .was{color:var(--muted);text-decoration:line-through;font-size:.85rem}
+.card .stock{font-size:.78rem;color:var(--muted)}
+.card .stock.out{color:#b23b3b;font-weight:600}
+.card .add{margin-top:10px;padding:11px;border-radius:10px;background:var(--cream);color:var(--walnut-dark);font-weight:700;border:1px solid var(--line);transition:all .2s}
+.card .add:hover{background:var(--walnut);color:#fff;border-color:var(--walnut)}
+.card .add[disabled]{opacity:.5;cursor:not-allowed}
+
+/* ---------- States ---------- */
+.state{padding:60px 24px;text-align:center;border:1px dashed var(--line);border-radius:var(--radius);background:#fff;color:var(--muted)}
+.state h3{color:var(--walnut-dark);margin-bottom:8px;font-size:1.15rem}
+.state .btn{margin-top:16px}
+.skel{background:linear-gradient(90deg,#eee 25%,#f5f5f5 37%,#eee 63%);background-size:400% 100%;animation:sk 1.4s ease infinite;border-radius:8px}
+@keyframes sk{0%{background-position:100% 50%}100%{background-position:0 50%}}
+
+/* ---------- Footer ---------- */
+.footer{margin-top:80px;background:var(--brown);color:#e8dcc8;padding:56px 0 20px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px;margin-bottom:40px}
+.footer h4{color:var(--bronze-soft);font-size:.82rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+.footer p,.footer a{color:#cfc0a8;font-size:.9rem;line-height:2}
+.footer a:hover{color:#fff}
+.footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.footer-brand img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;text-align:center;font-size:.82rem;color:#a89d8f}
+.newsletter{display:flex;gap:8px;margin-top:12px}
+.newsletter input{flex:1;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fff;font:inherit}
+.newsletter input::placeholder{color:#a89d8f}
+.newsletter button{padding:12px 18px;border-radius:10px;background:var(--bronze);color:#fff;font-weight:700}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:32px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  .nav{display:none}
+  .menu-toggle{display:inline-flex}
+  .brand img{width:44px;height:44px}
+  .brand-text strong{font-size:.95rem}
+  .section{padding:48px 0}
+  .cats{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .card .body{padding:12px}
+  .card h3{font-size:.9rem;min-height:2.4em}
+  .card .price .now{font-size:1rem}
+  .footer-grid{grid-template-columns:1fr}
+  .topbar{font-size:.72rem}
+  .topbar .container{flex-direction:column;gap:4px;text-align:center}
+}
+.mobile-nav{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:120;display:none}
+.mobile-nav.open{display:block}
+.mobile-nav .panel{position:absolute;top:0;inset-inline-end:0;height:100%;width:min(320px,86%);background:var(--ivory);padding:24px;box-shadow:var(--shadow-lg);overflow-y:auto}
+.mobile-nav .panel a{display:block;padding:12px 4px;border-bottom:1px solid var(--line);font-weight:600}
+.mobile-nav .close{margin-inline-start:auto;display:block;font-size:1.6rem;color:var(--muted);margin-bottom:12px}
+
+/* toast */
+.toast{position:fixed;bottom:24px;inset-inline-start:50%;transform:translateX(-50%) translateY(80px);background:var(--charcoal);color:#fff;padding:14px 24px;border-radius:12px;font-weight:600;box-shadow:var(--shadow-lg);opacity:0;transition:all .3s;z-index:200;max-width:90%;text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- ================= TOP BAR ================= -->
+<div class="topbar">
+  <div class="container">
+    <span data-i18n="topbar.ship">توصيل لكل محافظات مصر · تقسيط متاح</span>
+    <a href="#/track-order" data-i18n="topbar.track">تتبع طلبك</a>
+  </div>
+</div>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="container bar">
+    <a href="#/home" class="brand">
+      <img src="https://i.ibb.co/xtJRN3MH/554472398-122212388162563338-9203200651715817132-n.jpg" alt="EL3RBY FURNITURE — العربي فيرنتشر" />
+      <div class="brand-text">
+        <strong>العربي فيرنتشر</strong>
+        <span>EL3RBY FURNITURE</span>
+      </div>
+    </a>
+
+    <nav class="nav" id="mainNav">
+      <a href="#/home" data-i18n="nav.home">الرئيسية</a>
+      <a href="#/products" data-i18n="nav.products">المنتجات</a>
+      <a href="#/collections" data-i18n="nav.collections">التصنيفات</a>
+      <a href="#/offers" data-i18n="nav.offers">العروض</a>
+      <a href="#/best-sellers" data-i18n="nav.best">الأكثر مبيعًا</a>
+      <a href="#/new-arrivals" data-i18n="nav.new">وصل حديثًا</a>
+      <a href="#/projects" data-i18n="nav.projects">مشاريعنا</a>
+      <a href="#/design-your-space" data-i18n="nav.design">صمّم مساحتك</a>
+      <a href="#/custom-furniture" data-i18n="nav.custom">الأثاث المخصص</a>
+    </nav>
+
+    <div class="actions">
+      <button class="icon-btn" id="searchBtn" title="بحث" aria-label="بحث">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+      </button>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button data-lang="ar" class="active">AR</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="#/wishlist" class="icon-btn" title="المفضلة" aria-label="المفضلة">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        <span class="badge" id="wishCount">0</span>
+      </a>
+      <a href="#/account" class="icon-btn" title="حسابي" aria-label="حسابي">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+      </a>
+      <a href="#/cart" class="icon-btn" title="السلة" aria-label="السلة">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M6 6L5 3H2"/></svg>
+        <span class="badge" id="cartCount">0</span>
+      </a>
+      <button class="icon-btn menu-toggle" id="menuToggle" aria-label="القائمة">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile nav -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="panel">
+    <button class="close" id="mobileClose" aria-label="إغلاق">&times;</button>
+    <a href="#/home" data-i18n="nav.home">الرئيسية</a>
+    <a href="#/products" data-i18n="nav.products">المنتجات</a>
+    <a href="#/collections" data-i18n="nav.collections">التصنيفات</a>
+    <a href="#/offers" data-i18n="nav.offers">العروض</a>
+    <a href="#/best-sellers" data-i18n="nav.best">الأكثر مبيعًا</a>
+    <a href="#/new-arrivals" data-i18n="nav.new">وصل حديثًا</a>
+    <a href="#/projects" data-i18n="nav.projects">مشاريعنا</a>
+    <a href="#/design-your-space" data-i18n="nav.design">صمّم مساحتك</a>
+    <a href="#/custom-furniture" data-i18n="nav.custom">الأثاث المخصص</a>
+    <a href="#/about" data-i18n="nav.about">من نحن</a>
+    <a href="#/contact" data-i18n="nav.contact">تواصل معنا</a>
+  </div>
+</div>
+
+<!-- ================= APP ROOT ================= -->
+<main id="app" aria-live="polite"></main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="https://i.ibb.co/xtJRN3MH/554472398-122212388162563338-9203200651715817132-n.jpg" alt="EL3RBY FURNITURE" />
+          <div>
+            <strong style="color:#fff;display:block">العربي فيرنتشر</strong>
+            <span style="font-size:.78rem;color:#a89d8f">EL3RBY FURNITURE</span>
+          </div>
+        </div>
+        <p data-i18n="footer.about">أثاث مصري فاخر يُصنع بعناية ليدوم مدى الحياة. تصميم راقٍ. جودة تدوم. تفاصيل تصنع الفرق.</p>
+        <form class="newsletter" id="newsletterForm">
+          <input type="email" required placeholder="بريدك الإلكتروني" data-i18n-ph="footer.emailPh" />
+          <button type="submit" data-i18n="footer.subscribe">اشترك</button>
+        </form>
+      </div>
+      <div>
+        <h4 data-i18n="footer.shop">المتجر</h4>
+        <p><a href="#/products" data-i18n="nav.products">المنتجات</a></p>
+        <p><a href="#/offers" data-i18n="nav.offers">العروض</a></p>
+        <p><a href="#/new-arrivals" data-i18n="nav.new">وصل حديثًا</a></p>
+        <p><a href="#/best-sellers" data-i18n="nav.best">الأكثر مبيعًا</a></p>
+      </div>
+      <div>
+        <h4 data-i18n="footer.service">خدمة العملاء</h4>
+        <p><a href="#/about" data-i18n="nav.about">من نحن</a></p>
+        <p><a href="#/contact" data-i18n="nav.contact">تواصل معنا</a></p>
+        <p><a href="#/shipping" data-i18n="footer.shipping">الشحن</a></p>
+        <p><a href="#/returns" data-i18n="footer.returns">الاسترجاع</a></p>
+        <p><a href="#/warranty" data-i18n="footer.warranty">الضمان</a></p>
+        <p><a href="#/faq" data-i18n="footer.faq">الأسئلة الشائعة</a></p>
+      </div>
+      <div>
+        <h4 data-i18n="footer.contact">تواصل معنا</h4>
+        <p id="footerPhone">—</p>
+        <p id="footerEmail">—</p>
+        <p id="footerAddress">—</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer.rights">© <span id="year"></span> العربي فيرنتشر — جميع الحقوق محفوظة</span>
+      · <a href="#/privacy" data-i18n="footer.privacy">الخصوصية</a>
+      · <a href="#/terms" data-i18n="footer.terms">الشروط</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================================
+   EL3RBY FURNITURE — Frontend SPA
+   ---------------------------------------------------------------------
+   IMPORTANT — place your Supabase credentials below.
+   Use the ANON public key only. NEVER put the service_role key here.
+   ===================================================================== */
+window.__ENV = {
+  SUPABASE_URL: "https://xumjturktyxpookghixe.supabase.co",
+  SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh1bWp0dXJrdHl4cG9va2doaXhlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTEzOTcyNzgsImV4cCI6MjEwNjk3MzI3OH0.04m4spXGux_EsqcDJlYaejqPbDeQfkIBm2GU0DA9PWg"
+};
+
+(function(){
+'use strict';
+
+/* ---------------- Supabase client ---------------- */
+const { createClient } = supabase;
+const sb = createClient(window.__ENV.SUPABASE_URL, window.__ENV.SUPABASE_ANON_KEY, {
+  auth: { persistSession: true, autoRefreshToken: true }
+});
+window.sb = sb;
+
+/* ---------------- i18n dictionary ---------------- */
+const I18N = {
+  ar: {
+    "topbar.ship":"توصيل لكل محافظات مصر · تقسيط متاح",
+    "topbar.track":"تتبع طلبك",
+    "nav.home":"الرئيسية","nav.products":"المنتجات","nav.collections":"التصنيفات",
+    "nav.offers":"العروض","nav.best":"الأكثر مبيعًا","nav.new":"وصل حديثًا",
+    "nav.projects":"مشاريعنا","nav.design":"صمّم مساحتك","nav.custom":"الأثاث المخصص",
+    "nav.about":"من نحن","nav.contact":"تواصل معنا",
+    "hero.eyebrow":"العربي فيرنتشر",
+    "hero.title":"أثاث يصنع <em>المكان</em>",
+    "hero.lead":"تصميم راقٍ. جودة تدوم. تفاصيل تصنع الفرق.",
+    "hero.cta1":"اكتشف مجموعتنا","hero.cta2":"صمّم مساحتك",
+    "cats.title":"اكتشف عالم العربي","cats.lead":"اختر من تصنيفاتنا الواسعة ما يناسب مساحتك وذوقك.",
+    "products.title":"منتجات مختارة","products.lead":"قطع مميزة بجودة عالية وتصميم مصري أصيل.",
+    "products.all":"كل المنتجات",
+    "footer.about":"أثاث مصري فاخر يُصنع بعناية ليدوم مدى الحياة.",
+    "footer.shop":"المتجر","footer.service":"خدمة العملاء","footer.contact":"تواصل معنا",
+    "footer.subscribe":"اشترك","footer.emailPh":"بريدك الإلكتروني",
+    "footer.shipping":"الشحن","footer.returns":"الاسترجاع","footer.warranty":"الضمان",
+    "footer.faq":"الأسئلة الشائعة","footer.privacy":"الخصوصية","footer.terms":"الشروط",
+    "footer.rights":"© <span id=\"year\"></span> العربي فيرنتشر — جميع الحقوق محفوظة",
+    "state.loading":"جاري التحميل…",
+    "state.empty.title":"لسه مفيش منتجات","state.empty.body":"ابدأ بإضافة منتجات من لوحة التحكم.",
+    "state.error.title":"حصلت مشكلة مؤقتة","state.error.body":"تعذّر الاتصال بالخدمة. حاول مرة تانية.",
+    "state.retry":"إعادة المحاولة",
+    "state.notfound.title":"الصفحة غير موجودة","state.notfound.body":"الرابط اللي فتحته مش موجود.",
+    "state.catempty.title":"لسه مفيش تصنيفات","state.catempty.body":"التصنيفات هتظهر هنا بعد إضافتها.",
+    "card.add":"أضف للسلة","card.out":"غير متوفر","card.inStock":"متوفر",
+    "card.lowStock":"آخر القطع",
+    "toast.added":"تمت الإضافة للسلة",
+    "toast.needLogin":"سجّل الدخول الأول",
+    "toast.subscribed":"تم الاشتراك بنجاح",
+    "toast.error":"حصلت مشكلة، حاول مرة تانية"
+  },
+  en: {
+    "topbar.ship":"Delivery across Egypt · Installments available",
+    "topbar.track":"Track your order",
+    "nav.home":"Home","nav.products":"Products","nav.collections":"Categories",
+    "nav.offers":"Offers","nav.best":"Best Sellers","nav.new":"New Arrivals",
+    "nav.projects":"Projects","nav.design":"Design Your Space","nav.custom":"Custom Furniture",
+    "nav.about":"About","nav.contact":"Contact",
+    "hero.eyebrow":"EL3RBY FURNITURE",
+    "hero.title":"Furniture that <em>defines</em> the space",
+    "hero.lead":"Refined design. Lasting quality. Details that make the difference.",
+    "hero.cta1":"Explore Collection","hero.cta2":"Design Your Space",
+    "cats.title":"Discover EL3RBY World","cats.lead":"Browse our wide range of categories to fit your space.",
+    "products.title":"Featured Products","products.lead":"Distinctive pieces, high quality, authentic Egyptian design.",
+    "products.all":"All products",
+    "footer.about":"Luxury Egyptian furniture, crafted to last a lifetime.",
+    "footer.shop":"Shop","footer.service":"Customer Service","footer.contact":"Contact",
+    "footer.subscribe":"Subscribe","footer.emailPh":"Your email",
+    "footer.shipping":"Shipping","footer.returns":"Returns","footer.warranty":"Warranty",
+    "footer.faq":"FAQ","footer.privacy":"Privacy","footer.terms":"Terms",
+    "footer.rights":"© <span id=\"year\"></span> EL3RBY FURNITURE — All rights reserved",
+    "state.loading":"Loading…",
+    "state.empty.title":"No products yet","state.empty.body":"Add products from the admin dashboard.",
+    "state.error.title":"Temporary problem","state.error.body":"Could not reach the service. Please try again.",
+    "state.retry":"Retry",
+    "state.notfound.title":"Page not found","state.notfound.body":"The link you opened doesn't exist.",
+    "state.catempty.title":"No categories yet","state.catempty.body":"Categories will appear here once added.",
+    "card.add":"Add to cart","card.out":"Out of stock","card.inStock":"In stock",
+    "card.lowStock":"Last pieces",
+    "toast.added":"Added to cart",
+    "toast.needLogin":"Please sign in first",
+    "toast.subscribed":"Subscribed successfully",
+    "toast.error":"Something went wrong, please try again"
+  }
+};
+let LANG = localStorage.getItem('el3rby_lang') || 'ar';
+const t = (k) => (I18N[LANG] && I18N[LANG][k]) || k;
+
+function applyLang(){
+  document.documentElement.lang = LANG;
+  document.documentElement.dir = LANG === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-i18n]').forEach(el => { el.innerHTML = t(el.dataset.i18n); });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+  document.querySelectorAll('.lang-toggle button').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === LANG);
+  });
+  const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+  const fr = document.querySelector('footer .footer-bottom span[data-i18n="footer.rights"]');
+  if (fr) fr.innerHTML = t('footer.rights').replace('<span id="year"></span>', '<span id="year">'+new Date().getFullYear()+'</span>');
+}
+
+/* ---------------- Utilities ---------------- */
+const $app = document.getElementById('app');
+const toastEl = document.getElementById('toast');
+let toastTimer;
+function toast(msg){
+  toastEl.textContent = msg;
+  toastEl.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>toastEl.classList.remove('show'), 2400);
+}
+function money(n){
+  const v = Number(n)||0;
+  return v.toLocaleString(LANG === 'ar' ? 'ar-EG' : 'en-EG', { maximumFractionDigits:0 }) + ' ' + (LANG==='ar'?'ج.م':'EGP');
+}
+function esc(s){ return String(s??'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function pickName(row){ return LANG==='ar' ? (row.name_ar || row.name_en || '') : (row.name_en || row.name_ar || ''); }
+function pickDesc(row){ return LANG==='ar' ? (row.description_ar || row.description_en || '') : (row.description_en || row.description_ar || ''); }
+function primaryImage(images){
+  if (!images || !images.length) return null;
+  const primary = images.find(i => i.is_primary) || images[0];
+  return primary.url;
+}
+function discountPct(p){ if (!p.compare_price || p.compare_price <= p.price) return 0; return Math.round((1 - p.price/p.compare_price)*100); }
+
+/* ---------------- Skeleton / state helpers ---------------- */
+function skeletonGrid(n=8){
+  let s = '<div class="grid">';
+  for (let i=0;i<n;i++){
+    s += `<div class="card"><div class="media skel"></div><div class="body">
+      <div class="skel" style="height:12px;width:40%"></div>
+      <div class="skel" style="height:18px;width:80%"></div>
+      <div class="skel" style="height:22px;width:50%"></div>
+      <div class="skel" style="height:38px;width:100%;margin-top:8px"></div>
+    </div></div>`;
+  }
+  return s + '</div>';
+}
+function stateEmpty(){
+  return `<div class="state"><h3>${esc(t('state.empty.title'))}</h3><p>${esc(t('state.empty.body'))}</p></div>`;
+}
+function stateError(retryFn){
+  return `<div class="state"><h3>${esc(t('state.error.title'))}</h3><p>${esc(t('state.error.body'))}</p>
+    <button class="btn btn-primary" onclick="${retryFn}">${esc(t('state.retry'))}</button></div>`;
+}
+function stateNotFound(){
+  return `<div class="state"><h3>${esc(t('state.notfound.title'))}</h3><p>${esc(t('state.notfound.body'))}</p>
+    <a class="btn btn-primary" href="#/home">${esc(LANG==='ar'?'العودة للرئيسية':'Back home')}</a></div>`;
+}
+
+/* =====================================================================
+   ROUTER
+   ===================================================================== */
+const routes = [
+  { re:/^#?\/?$/,                    load: viewHome },
+  { re:/^#\/home\/?$/,                load: viewHome },
+  { re:/^#\/products\/?$/,            load: viewProducts },
+  { re:/^#\/collections\/?$/,         load: viewCollections },
+  { re:/^#\/product\/([^\/]+)$/,      load: (m) => viewProduct(m[1]) },
+  { re:/^#\/category\/([^\/]+)$/,     load: (m) => viewCategory(m[1]) },
+  { re:/^#\/search\/?(.*)$/,          load: (m) => viewSearch(decodeURIComponent(m[1]||'')) },
+  { re:/^#\/offers\/?$/,              load: () => viewProductList({ filter:{is_offer:true}, titleKey:'nav.offers' }) },
+  { re:/^#\/best-sellers\/?$/,        load: () => viewProductList({ filter:{is_best_seller:true}, order:'sales_count', titleKey:'nav.best' }) },
+  { re:/^#\/new-arrivals\/?$/,        load: () => viewProductList({ filter:{is_new_arrival:true}, order:'created_at', titleKey:'nav.new' }) },
+  { re:/^#\/wishlist\/?$/,            load: viewWishlist },
+  { re:/^#\/cart\/?$/,                load: viewCart },
+  { re:/^#\/account\/?$/,             load: viewAccount },
+  { re:/^#\/login\/?$/,               load: viewLogin },
+  { re:/^#\/register\/?$/,            load: viewRegister },
+  { re:/^#\/track-order\/?$/,         load: viewTrack },
+  { re:/^#\/projects\/?$/,            load: viewProjects },
+  { re:/^#\/design-your-space\/?$/,   load: viewDesignSpace },
+  { re:/^#\/custom-furniture\/?$/,    load: viewCustom },
+  { re:/^#\/contact\/?$/,             load: viewContact },
+  { re:/^#\/about\/?$/,               load: () => viewStatic('about') },
+  { re:/^#\/faq\/?$/,                 load: () => viewStatic('faq') },
+  { re:/^#\/shipping\/?$/,            load: () => viewStatic('shipping') },
+  { re:/^#\/returns\/?$/,             load: () => viewStatic('returns') },
+  { re:/^#\/warranty\/?$/,            load: () => viewStatic('warranty') },
+  { re:/^#\/privacy\/?$/,             load: () => viewStatic('privacy') },
+  { re:/^#\/terms\/?$/,               load: () => viewStatic('terms') },
+];
+
+async function render(){
+  const hash = location.hash || '#/home';
+  // active nav
+  document.querySelectorAll('.nav a, .mobile-nav a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === hash);
+  });
+  for (const r of routes){
+    const m = hash.match(r.re);
+    if (m){
+      $app.innerHTML = `<div class="container" style="padding-top:48px">${skeletonGrid(8)}</div>`;
+      try {
+        const html = await r.load(m);
+        $app.innerHTML = html;
+        window.scrollTo({top:0, behavior:'instant'});
+        afterRender();
+      } catch(err){
+        console.error(err);
+        $app.innerHTML = `<div class="container" style="padding-top:48px">${stateError('location.reload()')}</div>`;
+      }
+      return;
+    }
+  }
+  $app.innerHTML = `<div class="container" style="padding-top:48px">${stateNotFound()}</div>`;
+  afterRender();
+}
+
+window.addEventListener('hashchange', render);
+window.addEventListener('DOMContentLoaded', async () => {
+  applyLang();
+  await loadSiteSettings();
+  await refreshCounts();
+  render();
+});
+
+/* ---------------- Data loaders ---------------- */
+let SITE = {};
+
+async function loadSiteSettings(){
+  try {
+    const { data } = await sb.from('site_settings').select('*').eq('id','main').maybeSingle();
+    if (data) SITE = data;
+  } catch(e){ /* silent */ }
+  const p = document.getElementById('footerPhone'); if (p) p.textContent = SITE.phone || '—';
+  const em = document.getElementById('footerEmail'); if (em) em.textContent = SITE.email || '—';
+  const ad = document.getElementById('footerAddress'); if (ad) ad.textContent = (LANG==='ar'?SITE.address_ar:SITE.address_en) || '—';
+}
+
+async function fetchCategories(){
+  const { data, error } = await sb.from('categories')
+    .select('*').eq('is_active', true).order('sort_order', { ascending:true });
+  if (error) throw error;
+  return data || [];
+}
+
+async function fetchProductRows(opts={}){
+  let q = sb.from('products').select('*, category:categories(id,name_ar,name_en,slug), images:product_images(*)')
+    .eq('is_active', true);
+  if (opts.filter) for (const [k,v] of Object.entries(opts.filter)) q = q.eq(k, v);
+  if (opts.categoryId) q = q.eq('category_id', opts.categoryId);
+  if (opts.ilike) q = q.or(`name_ar.ilike.%${opts.ilike}%,name_en.ilike.%${opts.ilike}%,sku.ilike.%${opts.ilike}%`);
+  if (opts.order) q = q.order(opts.order, { ascending: !!opts.asc });
+  else q = q.order('created_at', { ascending:false });
+  if (opts.limit) q = q.limit(opts.limit);
+  const { data, error } = await q;
+  if (error) throw error;
+  return data || [];
+}
+
+/* ---------------- Views ---------------- */
+async function viewHome(){
+  let cats = [], products = [];
+  try { cats = await fetchCategories(); } catch(e){}
+  try { products = await fetchProductRows({ limit: 8 }); } catch(e){ products = null; }
+
+  const heroImg = (SITE.logo_url) || 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1200&q=80';
+  const heroVisual = 'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=1200&q=80';
+
+  const catsHtml = cats.length
+    ? `<div class="cats">${cats.map(c => `
+        <a class="cat" href="#/category/${esc(c.slug)}">
+          <img src="${esc(c.image_url || 'https://images.unsplash.com/photo-1550226891-ef816aed4a98?w=600&q=80')}"
+               alt="${esc(pickName(c))}" loading="lazy" />
+          <span>${esc(pickName(c))}</span>
+        </a>`).join('')}</div>`
+    : `<div class="state"><h3>${esc(t('state.catempty.title'))}</h3><p>${esc(t('state.catempty.body'))}</p></div>`;
+
+  const productsHtml = products === null
+      ? stateError('location.reload()')
+      : (products.length
+          ? `<div class="grid">${products.map(renderProductCard).join('')}</div>`
+          : stateEmpty());
+
+  return `
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <span class="eyebrow" style="color:var(--bronze);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:.78rem">${esc(t('hero.eyebrow'))}</span>
+          <h1 style="margin-top:10px">${t('hero.title')}</h1>
+          <p class="lead">${esc(t('hero.lead'))}</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#/products">${esc(t('hero.cta1'))}</a>
+            <a class="btn btn-ghost" href="#/design-your-space">${esc(t('hero.cta2'))}</a>
+          </div>
+        </div>
+        <div class="hero-visual"><img src="${esc(heroVisual)}" alt="EL3RBY Furniture showroom" loading="eager"/></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">${esc(LANG==='ar'?'تصنيفاتنا':'Categories')}</span>
+            <h2>${esc(t('cats.title'))}</h2>
+            <p>${esc(t('cats.lead'))}</p>
+          </div>
+          <a class="btn btn-ghost" href="#/collections">${esc(LANG==='ar'?'عرض الكل':'View all')}</a>
+        </div>
+        ${catsHtml}
+      </div>
+    </section>
+
+    <section class="section" style="background:var(--cream)">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">${esc(LANG==='ar'?'مختارات':'Featured')}</span>
+            <h2>${esc(t('products.title'))}</h2>
+            <p>${esc(t('products.lead'))}</p>
+          </div>
+          <a class="btn btn-ghost" href="#/products">${esc(t('products.all'))}</a>
+        </div>
+        ${productsHtml}
+      </div>
+    </section>
+  `;
+}
+
+function renderProductCard(p){
+  const img = primaryImage(p.images) || 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80';
+  const price = Number(p.price||0);
+  const cmp = Number(p.compare_price||0);
+  const pct = discountPct(p);
+  const inStock = (p.stock ?? 0) > 0;
+  const low = inStock && (p.stock ?? 0) <= (p.low_stock_threshold ?? 3);
+  const stockLabel = !inStock ? t('card.out') : (low ? t('card.lowStock') : t('card.inStock'));
+  const stockClass = inStock ? '' : 'out';
+
+  return `
+    <article class="card" data-id="${esc(p.id)}">
+      <a class="media" href="#/product/${esc(p.slug)}">
+        <img src="${esc(img)}" alt="${esc(pickName(p))}" loading="lazy"/>
+        ${pct ? `<span class="tag">-${pct}%</span>` : ''}
+      </a>
+      <div class="quick">
+        <button title="${esc(LANG==='ar'?'أضف للمفضلة':'Wishlist')}" data-action="wish" data-id="${esc(p.id)}">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        </button>
+      </div>
+      <div class="body">
+        <span class="cat-name">${esc(p.category ? pickName(p.category) : '')}</span>
+        <h3><a href="#/product/${esc(p.slug)}">${esc(pickName(p))}</a></h3>
+        <div class="price">
+          <span class="now">${money(price)}</span>
+          ${cmp > price ? `<span class="was">${money(cmp)}</span>` : ''}
+        </div>
+        <div class="stock ${stockClass}">${esc(stockLabel)}</div>
+        <button class="add" data-action="add" data-id="${esc(p.id)}" ${inStock?'':'disabled'}>
+          ${esc(inStock ? t('card.add') : t('card.out'))}
+        </button>
+      </div>
+    </article>`;
+}
+
+async function viewProducts(){
+  return viewProductList({});
+}
+
+async function viewProductList(opts){
+  let list = null, cats = [];
+  try { list = await fetchProductRows(opts); } catch(e){ list = null; }
+  try { cats = await fetchCategories(); } catch(e){}
+  const titleKey = opts.titleKey || 'products.title';
+  const title = t(titleKey);
+
+  const body = list === null
+    ? stateError('location.reload()')
+    : (list.length ? `<div class="grid">${list.map(renderProductCard).join('')}</div>` : stateEmpty());
+
+  const catChips = cats.length ? `
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px">
+      <a class="btn btn-ghost" style="padding:8px 16px;font-size:.85rem" href="#/products">${esc(LANG==='ar'?'الكل':'All')}</a>
+      ${cats.map(c=>`<a class="btn btn-ghost" style="padding:8px 16px;font-size:.85rem" href="#/category/${esc(c.slug)}">${esc(pickName(c))}</a>`).join('')}
+    </div>` : '';
+
+  return `
+    <section class="section">
+      <div class="container">
+        <div class="section-head"><div><h2>${esc(title)}</h2></div></div>
+        ${catChips}
+        ${body}
+      </div>
+    </section>`;
+}
+
+async function viewCollections(){
+  let cats = [];
+  try { cats = await fetchCategories(); } catch(e){}
+  const body = cats.length
+    ? `<div class="cats">${cats.map(c=>`
+        <a class="cat" href="#/category/${esc(c.slug)}">
+          <img src="${esc(c.image_url || 'https://images.unsplash.com/photo-1550226891-ef816aed4a98?w=600&q=80')}" alt="${esc(pickName(c))}" loading="lazy"/>
+          <span>${esc(pickName(c))}</span>
+        </a>`).join('')}</div>`
+    : `<div class="state"><h3>${esc(t('state.catempty.title'))}</h3><p>${esc(t('state.catempty.body'))}</p></div>`;
+  return `<section class="section"><div class="container"><div class="section-head"><div><h2>${esc(t('cats.title'))}</h2></div></div>${body}</div></section>`;
+}
+
+async function viewCategory(slug){
+  const { data: cat } = await sb.from('categories').select('*').eq('slug', slug).maybeSingle();
+  if (!cat) return stateNotFound();
+  let list = null;
+  try { list = await fetchProductRows({ categoryId: cat.id }); } catch(e){ list = null; }
+  const body = list === null ? stateError('location.reload()')
+    : (list.length ? `<div class="grid">${list.map(renderProductCard).join('')}</div>` : stateEmpty());
+  return `<section class="section"><div class="container">
+    <div class="section-head"><div><span class="eyebrow">${esc(LANG==='ar'?'تصنيف':'Category')}</span><h2>${esc(pickName(cat))}</h2></div></div>
+    ${body}
+  </div></section>`;
+}
+
+async function viewProduct(slug){
+  const { data: p, error } = await sb.from('products')
+    .select('*, category:categories(*), images:product_images(*), variants:product_variants(*)')
+    .eq('slug', slug).maybeSingle();
+  if (error || !p) return stateNotFound();
+  const img = primaryImage(p.images) || 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1000&q=80';
+  const cmp = Number(p.compare_price||0);
+  const price = Number(p.price||0);
+  const pct = discountPct(p);
+  const inStock = (p.stock||0) > 0;
+
+  return `
+  <section class="section"><div class="container" style="display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start">
+    <div>
+      <div style="border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--sand);aspect-ratio:1/1">
+        <img src="${esc(img)}" alt="${esc(pickName(p))}" style="width:100%;height:100%;object-fit:cover"/>
+      </div>
+      ${p.images && p.images.length > 1 ? `
+        <div style="display:flex;gap:10px;margin-top:14px;overflow-x:auto">
+          ${p.images.sort((a,b)=>(a.sort_order||0)-(b.sort_order||0)).map(im=>`
+            <img src="${esc(im.url)}" alt="${esc(pickName(p))}" style="width:78px;height:78px;object-fit:cover;border-radius:8px;border:1px solid var(--line)"/>
+          `).join('')}
+        </div>` : ''}
+    </div>
+    <div>
+      <span class="eyebrow" style="color:var(--bronze);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:.78rem">
+        ${esc(p.category ? pickName(p.category) : '')}
+      </span>
+      <h1 style="font-size:2rem;color:var(--walnut-dark);margin-top:8px">${esc(pickName(p))}</h1>
+      <div style="display:flex;align-items:baseline;gap:12px;margin-top:18px">
+        <span style="font-size:1.7rem;font-weight:800;color:var(--walnut-dark)">${money(price)}</span>
+        ${cmp>price?`<span style="color:var(--muted);text-decoration:line-through">${money(cmp)}</span><span class="tag" style="position:static;background:var(--bronze);color:#fff;padding:3px 9px;border-radius:999px;font-size:.75rem;font-weight:700">-${pct}%</span>`:''}
+      </div>
+      <p style="color:var(--muted);margin-top:16px;line-height:1.8">${esc(pickDesc(p))}</p>
+      <div style="margin-top:20px;color:${inStock?'var(--muted)':'#b23b3b'};font-weight:600">
+        ${inStock? esc(t('card.inStock')) : esc(t('card.out'))}
+      </div>
+      <button class="btn btn-primary" style="margin-top:24px;width:100%;justify-content:center"
+        data-action="add" data-id="${esc(p.id)}" ${inStock?'':'disabled'}>
+        ${esc(t('card.add'))}
+      </button>
+      <div style="margin-top:20px;display:grid;gap:6px;font-size:.9rem;color:var(--muted)">
+        <div><strong style="color:var(--charcoal)">SKU:</strong> ${esc(p.sku||'—')}</div>
+        ${p.material_ar||p.material_en?`<div><strong style="color:var(--charcoal)">${LANG==='ar'?'المادة':'Material'}:</strong> ${esc(LANG==='ar'?p.material_ar:p.material_en)}</div>`:''}
+        ${p.dimensions?`<div><strong style="color:var(--charcoal)">${LANG==='ar'?'المقاسات':'Dimensions'}:</strong> ${esc(p.dimensions)}</div>`:''}
+        ${p.warranty_ar||p.warranty_en?`<div><strong style="color:var(--charcoal)">${LANG==='ar'?'الضمان':'Warranty'}:</strong> ${esc(LANG==='ar'?p.warranty_ar:p.warranty_en)}</div>`:''}
+      </div>
+    </div>
+  </div></section>`;
+}
+
+async function viewSearch(q){
+  if (!q) return `<section class="section"><div class="container">
+    <div class="section-head"><div><h2>${esc(LANG==='ar'?'بحث':'Search')}</h2></div></div>
+    <form onsubmit="event.preventDefault(); location.hash='#/search/'+encodeURIComponent(this.q.value)"
+      style="display:flex;gap:8px;max-width:520px">
+      <input name="q" value="" placeholder="${esc(LANG==='ar'?'ابحث عن منتج…':'Search products…')}"
+        style="flex:1;padding:14px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <button class="btn btn-primary" type="submit">${esc(LANG==='ar'?'ابحث':'Search')}</button>
+    </form>
+  </div></section>`;
+  let list = null;
+  try { list = await fetchProductRows({ ilike: q, limit: 40 }); } catch(e){ list = null; }
+  const body = list === null ? stateError('location.reload()')
+    : (list.length ? `<div class="grid">${list.map(renderProductCard).join('')}</div>` : stateEmpty());
+  return `<section class="section"><div class="container">
+    <div class="section-head"><div><h2>${esc(LANG==='ar'?'نتائج البحث عن: ':'Results for: ')} "${esc(q)}"</h2></div></div>
+    ${body}
+  </div></section>`;
+}
+
+async function viewWishlist(){
+  const { data:{ user } } = await sb.auth.getUser();
+  if (!user) {
+    return `<section class="section"><div class="container">
+      <div class="state"><h3>${esc(LANG==='ar'?'سجّل الدخول أول':'Please sign in')}</h3>
+      <a class="btn btn-primary" href="#/login">${esc(LANG==='ar'?'تسجيل الدخول':'Sign in')}</a></div>
+    </div></section>`;
+  }
+  const { data, error } = await sb.from('wishlist_items').select('product_id, product:products(*, images:product_images(*))').eq('user_id', user.id);
+  if (error) return stateError('location.reload()');
+  const items = (data||[]).map(r=>r.product).filter(Boolean);
+  const body = items.length ? `<div class="grid">${items.map(renderProductCard).join('')}</div>`
+    : `<div class="state"><h3>${esc(LANG==='ar'?'لسه مفيش قطع محفوظة':'No saved items yet')}</h3>
+       <a class="btn btn-primary" href="#/products">${esc(LANG==='ar'?'اكتشف المنتجات':'Browse products')}</a></div>`;
+  return `<section class="section"><div class="container"><div class="section-head"><div><h2>${esc(LANG==='ar'?'المفضلة':'Wishlist')}</h2></div></div>${body}</div></section>`;
+}
+
+async function viewCart(){
+  const { data:{ user } } = await sb.auth.getUser();
+  if (!user) {
+    return `<section class="section"><div class="container">
+      <div class="state"><h3>${esc(LANG==='ar'?'سجّل الدخول لعرض سلتك':'Sign in to view cart')}</h3>
+      <a class="btn btn-primary" href="#/login">${esc(LANG==='ar'?'تسجيل الدخول':'Sign in')}</a></div>
+    </div></section>`;
+  }
+  const { data, error } = await sb.from('cart_items')
+    .select('id, quantity, product:products(id,slug,name_ar,name_en,price,stock,images:product_images(url,is_primary))')
+    .eq('user_id', user.id);
+  if (error) return stateError('location.reload()');
+  const items = data||[];
+  if (!items.length) {
+    return `<section class="section"><div class="container">
+      <div class="state"><h3>${esc(LANG==='ar'?'سلتك مستنية أول قطعة':'Your cart is waiting')}</h3>
+      <a class="btn btn-primary" href="#/products">${esc(LANG==='ar'?'ابدأ التسوق':'Start shopping')}</a></div>
+    </div></section>`;
+  }
+  const total = items.reduce((s,i)=>s + Number(i.product.price||0)*i.quantity, 0);
+  return `<section class="section"><div class="container">
+    <div class="section-head"><div><h2>${esc(LANG==='ar'?'سلة التسوق':'Shopping Cart')}</h2></div></div>
+    <div style="display:grid;gap:14px">
+      ${items.map(i=>`
+        <div style="display:flex;gap:16px;padding:16px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);align-items:center">
+          <img src="${esc(primaryImage(i.product.images)||'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&q=80')}"
+            style="width:80px;height:80px;object-fit:cover;border-radius:8px"/>
+          <div style="flex:1">
+            <div style="font-weight:700">${esc(pickName(i.product))}</div>
+            <div style="color:var(--muted);font-size:.9rem">${money(i.product.price)} × ${i.quantity}</div>
+          </div>
+          <button class="btn btn-ghost" data-action="remove-cart" data-id="${esc(i.id)}">${esc(LANG==='ar'?'حذف':'Remove')}</button>
+        </div>`).join('')}
+    </div>
+    <div style="margin-top:24px;display:flex;justify-content:space-between;font-size:1.2rem;font-weight:800">
+      <span>${esc(LANG==='ar'?'الإجمالي':'Total')}</span><span>${money(total)}</span>
+    </div>
+    <a class="btn btn-primary" href="#/checkout" style="margin-top:20px;width:100%;justify-content:center">${esc(LANG==='ar'?'إتمام الشراء':'Checkout')}</a>
+  </div></section>`;
+}
+
+async function viewLogin(){
+  return `<section class="section"><div class="container" style="max-width:440px">
+    <div class="section-head"><div><h2>${esc(LANG==='ar'?'تسجيل الدخول':'Sign in')}</h2></div></div>
+    <form id="loginForm" style="display:grid;gap:12px">
+      <input name="email" type="email" required placeholder="${esc(LANG==='ar'?'البريد الإلكتروني':'Email')}" style="padding:14px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <input name="password" type="password" required placeholder="${esc(LANG==='ar'?'كلمة المرور':'Password')}" style="padding:14px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <button class="btn btn-primary" type="submit" style="justify-content:center">${esc(LANG==='ar'?'دخول':'Sign in')}</button>
+      <p style="text-align:center;color:var(--muted)">${LANG==='ar'?'مفيش حساب؟':'No account?'} <a href="#/register" style="color:var(--walnut);font-weight:700">${LANG==='ar'?'سجّل':'Register'}</a></p>
+    </form>
+  </div></section>`;
+}
+
+async function viewRegister(){
+  return `<section class="section"><div class="container" style="max-width:440px">
+    <div class="section-head"><div><h2>${esc(LANG==='ar'?'إنشاء حساب':'Create account')}</h2></div></div>
+    <form id="registerForm" style="display:grid;gap:12px">
+      <input name="full_name" required placeholder="${esc(LANG==='ar'?'الاسم بالكامل':'Full name')}" style="padding:14px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <input name="phone" required placeholder="${esc(LANG==='ar'?'رقم الموبايل':'Phone')}" style="padding:14px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <input name="email" type="email" required placeholder="${esc(LANG==='ar'?'البريد الإلكتروني':'Email')}" style="padding:14px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <input name="password" type="password" required minlength="6" placeholder="${esc(LANG==='ar'?'كلمة المرور':'Password')}" style="padding:14px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <button class="btn btn-primary" type="submit" style="justify-content:center">${esc(LANG==='ar'?'إنشاء الحساب':'Create account')}</button>
+    </form>
+  </div></section>`;
+}
+
+async function viewAccount(){
+  const { data:{ user } } = await sb.auth.getUser();
+  if (!user) return `<section class="section"><div class="container"><div class="state"><h3>${esc(LANG==='ar'?'سجّل الدخول':'Please sign in')}</h3><a class="btn btn-primary" href="#/login">${esc(LANG==='ar'?'دخول':'Sign in')}</a></div></div></section>`;
+  const { data:profile } = await sb.from('profiles').select('*').eq('id', user.id).maybeSingle();
+  return `<section class="section"><div class="container" style="max-width:640px">
+    <div class="section-head"><div><h2>${esc(LANG==='ar'?'حسابي':'My Account')}</h2></div></div>
+    <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:grid;gap:10px">
+      <div><strong>${esc(LANG==='ar'?'الاسم':'Name')}:</strong> ${esc(profile?.full_name||'—')}</div>
+      <div><strong>${esc(LANG==='ar'?'البريد':'Email')}:</strong> ${esc(user.email)}</div>
+      <div><strong>${esc(LANG==='ar'?'الموبايل':'Phone')}:</strong> ${esc(profile?.phone||'—')}</div>
+      <div><strong>${esc(LANG==='ar'?'الدور':'Role')}:</strong> ${esc(profile?.role||'customer')}</div>
+    </div>
+    <button class="btn btn-ghost" id="logoutBtn" style="margin-top:16px">${esc(LANG==='ar'?'تسجيل خروج':'Sign out')}</button>
+  </div></section>`;
+}
+
+async function viewTrack(){
+  return `<section class="section"><div class="container" style="max-width:520px">
+    <div class="section-head"><div><h2>${esc(LANG==='ar'?'تتبع طلبك':'Track your order')}</h2></div></div>
+    <form id="trackForm" style="display:grid;gap:12px">
+      <input name="order_number" required placeholder="${esc(LANG==='ar'?'رقم الطلب':'Order number')}" style="padding:14px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <input name="phone" required placeholder="${esc(LANG==='ar'?'رقم الموبايل':'Phone')}" style="padding:14px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <button class="btn btn-primary" type="submit" style="justify-content:center">${esc(LANG==='ar'?'تتبع':'Track')}</button>
+    </form>
+    <div id="trackResult" style="margin-top:20px"></div>
+  </div></section>`;
+}
+
+async function viewProjects(){
+  const { data, error } = await sb.from('projects').select('*').eq('is_active', true).order('sort_order');
+  if (error) return stateError('location.reload()');
+  const list = data||[];
+  const body = list.length ? `<div class="grid">${list.map(p=>`
+    <article class="card">
+      <a class="media" href="#/projects"><img src="${esc(p.cover_url||'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80')}" alt="${esc(pickName(p))}" loading="lazy"/></a>
+      <div class="body">
+        <span class="cat-name">${esc(p.location||'')}</span>
+        <h3>${esc(LANG==='ar'?p.title_ar:p.title_en)}</h3>
+        <p style="color:var(--muted);font-size:.9rem">${esc(LANG==='ar'?p.description_ar:p.description_en||'')}</p>
+      </div>
+    </article>`).join('')}</div>`
+    : `<div class="state"><h3>${esc(LANG==='ar'?'لسه مفيش مشاريع':'No projects yet')}</h3></div>`;
+  return `<section class="section"><div class="container"><div class="section-head"><div><h2>${esc(LANG==='ar'?'من أعمالنا':'Our Projects')}</h2></div></div>${body}</div></section>`;
+}
+
+async function viewDesignSpace(){
+  return `<section class="section"><div class="container" style="max-width:720px">
+    <div class="section-head"><div><span class="eyebrow">${esc(LANG==='ar'?'استوديو':'Studio')}</span><h2>${esc(LANG==='ar'?'صمّم مساحتك':'Design Your Space')}</h2></div></div>
+    <form id="designForm" style="display:grid;gap:16px;background:#fff;padding:28px;border:1px solid var(--line);border-radius:var(--radius)">
+      <label>${esc(LANG==='ar'?'نوع الغرفة':'Room type')}
+        <select name="room_type" required style="width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit;margin-top:6px">
+          <option value="living">${esc(LANG==='ar'?'غرفة معيشة':'Living Room')}</option>
+          <option value="bedroom">${esc(LANG==='ar'?'غرفة نوم':'Bedroom')}</option>
+          <option value="dining">${esc(LANG==='ar'?'غرفة سفرة':'Dining Room')}</option>
+          <option value="office">${esc(LANG==='ar'?'مكتب':'Office')}</option>
+        </select>
+      </label>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <label>${esc(LANG==='ar'?'الطول (م)':'Length (m)')}<input type="number" step="0.1" name="length_m" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit;margin-top:6px"/></label>
+        <label>${esc(LANG==='ar'?'العرض (م)':'Width (m)')}<input type="number" step="0.1" name="width_m" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit;margin-top:6px"/></label>
+      </div>
+      <label>${esc(LANG==='ar'?'الستايل':'Style')}
+        <select name="style" required style="width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit;margin-top:6px">
+          <option value="modern">Modern</option><option value="luxury">Luxury</option>
+          <option value="classic">Classic</option><option value="minimal">Minimal</option>
+        </select>
+      </label>
+      <label>${esc(LANG==='ar'?'الميزانية':'Budget')}
+        <select name="budget_range" required style="width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit;margin-top:6px">
+          <option value="<30000">&lt; 30,000</option>
+          <option value="30000-50000">30,000–50,000</option>
+          <option value="50000-100000">50,000–100,000</option>
+          <option value="100000+">100,000+</option>
+        </select>
+      </label>
+      <input name="name" required placeholder="${esc(LANG==='ar'?'اسمك':'Your name')}" style="padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <input name="phone" required placeholder="${esc(LANG==='ar'?'رقم الموبايل':'Phone')}" style="padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <button class="btn btn-primary" type="submit" style="justify-content:center">${esc(LANG==='ar'?'أرسل الطلب':'Send request')}</button>
+    </form>
+  </div></section>`;
+}
+
+async function viewCustom(){
+  return `<section class="section"><div class="container" style="max-width:720px">
+    <div class="section-head"><div><span class="eyebrow">${esc(LANG==='ar'?'ورشة':'Atelier')}</span><h2>${esc(LANG==='ar'?'قطعتك على ذوقك':'Custom Furniture')}</h2></div></div>
+    <form id="customForm" style="display:grid;gap:16px;background:#fff;padding:28px;border:1px solid var(--line);border-radius:var(--radius)">
+      <input name="product_type" required placeholder="${esc(LANG==='ar'?'نوع القطعة (كنبة، ترابيزة…)':'Product type')}" style="padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+        <input name="width_cm" type="number" placeholder="${esc(LANG==='ar'?'العرض (سم)':'Width (cm)')}" style="padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+        <input name="height_cm" type="number" placeholder="${esc(LANG==='ar'?'الارتفاع (سم)':'Height (cm)')}" style="padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+        <input name="depth_cm" type="number" placeholder="${esc(LANG==='ar'?'العمق (سم)':'Depth (cm)')}" style="padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      </div>
+      <input name="wood" placeholder="${esc(LANG==='ar'?'نوع الخشب':'Wood type')}" style="padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <input name="color" placeholder="${esc(LANG==='ar'?'اللون':'Color')}" style="padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <input name="fabric" placeholder="${esc(LANG==='ar'?'القماش':'Fabric')}" style="padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <input name="name" required placeholder="${esc(LANG==='ar'?'اسمك':'Your name')}" style="padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <input name="phone" required placeholder="${esc(LANG==='ar'?'رقم الموبايل':'Phone')}" style="padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <textarea name="notes" placeholder="${esc(LANG==='ar'?'ملاحظات':'Notes')}" rows="3" style="padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit"></textarea>
+      <button class="btn btn-primary" type="submit" style="justify-content:center">${esc(LANG==='ar'?'اطلب تصميمك':'Request design')}</button>
+    </form>
+  </div></section>`;
+}
+
+async function viewContact(){
+  return `<section class="section"><div class="container" style="max-width:640px">
+    <div class="section-head"><div><h2>${esc(LANG==='ar'?'تواصل معنا':'Contact us')}</h2></div></div>
+    <form id="contactForm" style="display:grid;gap:12px;background:#fff;padding:28px;border:1px solid var(--line);border-radius:var(--radius)">
+      <input name="name" required placeholder="${esc(LANG==='ar'?'الاسم':'Name')}" style="padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <input name="phone" required placeholder="${esc(LANG==='ar'?'الموبايل':'Phone')}" style="padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <input name="email" type="email" placeholder="${esc(LANG==='ar'?'البريد':'Email')}" style="padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit"/>
+      <textarea name="message" required rows="4" placeholder="${esc(LANG==='ar'?'رسالتك':'Your message')}" style="padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit"></textarea>
+      <button class="btn btn-primary" type="submit" style="justify-content:center">${esc(LANG==='ar'?'أرسل':'Send')}</button>
+    </form>
+  </div></section>`;
+}
+
+async function viewStatic(key){
+  const pages = {
+    about:{ar:['من نحن','العربي فيرنتشر علامة أثاث مصرية تُصنع بحرفية عالية لتدوم مدى الحياة.'],en:['About','EL3RBY FURNITURE — Egyptian craftsmanship built to last.']},
+    faq:{ar:['الأسئلة الشائعة','هنا ستجد أجوبة أكثر الأسئلة تكرارًا. جاري تجهيز المحتوى من لوحة التحكم.'],en:['FAQ','Frequently asked questions.'],},
+    shipping:{ar:['الشحن','نوفر الشحن لكل محافظات مصر.'],en:['Shipping','We deliver across Egypt.']},
+    returns:{ar:['الاسترجاع','سياسة الاسترجاع خلال 14 يوم من الاستلام.'],en:['Returns','Return policy within 14 days.']},
+    warranty:{ar:['الضمان','ضمان ضد عيوب الصناعة على كل القطع.'],en:['Warranty','Warranty against manufacturing defects.']},
+    privacy:{ar:['الخصوصية','نحترم خصوصيتك ولا نشارك بياناتك مع أي طرف ثالث.'],en:['Privacy','We respect your privacy.']},
+    terms:{ar:['الشروط والأحكام','يرجى مراجعة الشروط قبل إتمام أي طلب.'],en:['Terms & Conditions','Please review our terms.']}
+  };
+  const page = pages[key] || {ar:['صفحة',''],en:['Page','']};
+  const [title, body] = LANG==='ar'?page.ar:page.en;
+  return `<section class="section"><div class="container" style="max-width:800px">
+    <div class="section-head"><div><h2>${esc(title)}</h2></div></div>
+    <p style="color:var(--muted);line-height:1.9;font-size:1.05rem">${esc(body)}</p>
+  </div></section>`;
+}
+
+/* =====================================================================
+   AFTER RENDER — attach event handlers
+   ===================================================================== */
+function afterRender(){
+  // Add to cart
+  document.querySelectorAll('[data-action="add"]').forEach(btn => {
+    btn.addEventListener('click', onAddToCart);
+  });
+  // Wishlist quick toggle
+  document.querySelectorAll('[data-action="wish"]').forEach(btn => {
+    btn.addEventListener('click', onToggleWish);
+  });
+  // Remove cart item
+  document.querySelectorAll('[data-action="remove-cart"]').forEach(btn => {
+    btn.addEventListener('click', onRemoveCart);
+  });
+  // Auth forms
+  const lf = document.getElementById('loginForm'); if (lf) lf.addEventListener('submit', onLogin);
+  const rf = document.getElementById('registerForm'); if (rf) rf.addEventListener('submit', onRegister);
+  const logout = document.getElementById('logoutBtn'); if (logout) logout.addEventListener('click', onLogout);
+  const tf = document.getElementById('trackForm'); if (tf) tf.addEventListener('submit', onTrack);
+  const cf = document.getElementById('contactForm'); if (cf) cf.addEventListener('submit', onContact);
+  const df = document.getElementById('designForm'); if (df) df.addEventListener('submit', onDesign);
+  const cuf = document.getElementById('customForm'); if (cuf) cuf.addEventListener('submit', onCustom);
+  const nf = document.getElementById('newsletterForm'); if (nf) nf.addEventListener('submit', onNewsletter);
+}
+
+/* ---------------- Actions ---------------- */
+async function onAddToCart(e){
+  const id = e.currentTarget.dataset.id;
+  const { data:{ user } } = await sb.auth.getUser();
+  if (!user){ toast(t('toast.needLogin')); location.hash = '#/login'; return; }
+  const { error } = await sb.from('cart_items').upsert(
+    { user_id:user.id, product_id:id, quantity:1 },
+    { onConflict:'user_id,product_id,variant_id', ignoreDuplicates:false }
+  );
+  // If already in cart we need to increment. Simpler: read then update.
+  const { data:existing } = await sb.from('cart_items').select('id,quantity')
+    .eq('user_id',user.id).eq('product_id',id).is('variant_id',null).maybeSingle();
+  if (existing){
+    await sb.from('cart_items').update({ quantity: existing.quantity+1 }).eq('id', existing.id);
+  } else if (error){
+    toast(t('toast.error')); return;
+  }
+  await refreshCounts();
+  toast(t('toast.added'));
+}
+
+async function onToggleWish(e){
+  const id = e.currentTarget.dataset.id;
+  const { data:{ user } } = await sb.auth.getUser();
+  if (!user){ toast(t('toast.needLogin')); location.hash = '#/login'; return; }
+  const { data:existing } = await sb.from('wishlist_items').select('id')
+    .eq('user_id',user.id).eq('product_id',id).maybeSingle();
+  if (existing){
+    await sb.from('wishlist_items').delete().eq('id', existing.id);
+  } else {
+    await sb.from('wishlist_items').insert({ user_id:user.id, product_id:id });
+  }
+  await refreshCounts();
+}
+
+async function onRemoveCart(e){
+  const id = e.currentTarget.dataset.id;
+  await sb.from('cart_items').delete().eq('id', id);
+  await refreshCounts();
+  render();
+}
+
+async function onLogin(e){
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const { error } = await sb.auth.signInWithPassword({
+    email: fd.get('email'), password: fd.get('password')
+  });
+  if (error){ toast(error.message); return; }
+  await refreshCounts();
+  location.hash = '#/account';
+  render();
+}
+
+async function onRegister(e){
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const { error } = await sb.auth.signUp({
+    email: fd.get('email'), password: fd.get('password'),
+    options:{ data:{ full_name:fd.get('full_name'), phone:fd.get('phone') } }
+  });
+  if (error){ toast(error.message); return; }
+  toast(LANG==='ar'?'تم إنشاء الحساب':'Account created');
+  location.hash = '#/account';
+  render();
+}
+
+async function onLogout(){
+  await sb.auth.signOut();
+  await refreshCounts();
+  location.hash = '#/home';
+  render();
+}
+
+async function onTrack(e){
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const { data, error } = await sb.rpc('track_order', {
+    p_order_number: fd.get('order_number'), p_phone: fd.get('phone')
+  });
+  const box = document.getElementById('trackResult');
+  if (error || !data || !data.length){
+    box.innerHTML = `<div class="state"><h3>${esc(LANG==='ar'?'لم نجد الطلب':'Order not found')}</h3></div>`;
+    return;
+  }
+  const o = data[0];
+  box.innerHTML = `<div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px">
+    <div><strong>${esc(LANG==='ar'?'رقم الطلب':'Order number')}:</strong> ${esc(o.order_number)}</div>
+    <div><strong>${esc(LANG==='ar'?'الحالة':'Status')}:</strong> ${esc(o.status)}</div>
+    <div><strong>${esc(LANG==='ar'?'الإجمالي':'Total')}:</strong> ${money(o.total)}</div>
+  </div>`;
+}
+
+async function onContact(e){
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const payload = Object.fromEntries(fd.entries());
+  const { error } = await sb.from('contact_messages').insert(payload);
+  if (error){ toast(t('toast.error')); return; }
+  toast(LANG==='ar'?'تم إرسال رسالتك':'Message sent');
+  e.target.reset();
+}
+
+async function onDesign(e){
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const payload = Object.fromEntries(fd.entries());
+  payload.length_m = payload.length_m ? Number(payload.length_m) : null;
+  payload.width_m = payload.width_m ? Number(payload.width_m) : null;
+  const { error } = await sb.from('room_designs').insert(payload);
+  if (error){ toast(t('toast.error')); return; }
+  toast(LANG==='ar'?'تم إرسال الطلب':'Request sent');
+  e.target.reset();
+}
+
+async function onCustom(e){
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const payload = Object.fromEntries(fd.entries());
+  ['width_cm','height_cm','depth_cm'].forEach(k=>{ payload[k] = payload[k]?Number(payload[k]):null; });
+  const { error } = await sb.from('custom_requests').insert(payload);
+  if (error){ toast(t('toast.error')); return; }
+  toast(LANG==='ar'?'تم استلام طلبك':'Request received');
+  e.target.reset();
+}
+
+async function onNewsletter(e){
+  e.preventDefault();
+  const email = e.target.querySelector('input').value;
+  const { error } = await sb.from('newsletter_subscribers').insert({ email });
+  if (error && !/duplicate/i.test(error.message)){ toast(t('toast.error')); return; }
+  toast(t('toast.subscribed'));
+  e.target.reset();
+}
+
+/* ---------------- Refresh counters (cart / wishlist) ---------------- */
+async function refreshCounts(){
+  const { data:{ user } } = await sb.auth.getUser();
+  const cartEl = document.getElementById('cartCount');
+  const wishEl = document.getElementById('wishCount');
+  if (!user){ cartEl.textContent='0'; wishEl.textContent='0'; return; }
+  const [{ count:c }, { count:w }] = await Promise.all([
+    sb.from('cart_items').select('*',{head:true,count:'exact'}).eq('user_id',user.id),
+    sb.from('wishlist_items').select('*',{head:true,count:'exact'}).eq('user_id',user.id)
+  ]);
+  cartEl.textContent = c||0;
+  wishEl.textContent = w||0;
+}
+
+/* ---------------- Language toggle ---------------- */
+document.querySelectorAll('.lang-toggle button').forEach(b => {
+  b.addEventListener('click', () => {
+    LANG = b.dataset.lang;
+    localStorage.setItem('el3rby_lang', LANG);
+    applyLang();
+    render();
+  });
+});
+
+/* ---------------- Mobile menu ---------------- */
+const mobileNav = document.getElementById('mobileNav');
+document.getElementById('menuToggle').addEventListener('click', () => mobileNav.classList.add('open'));
+document.getElementById('mobileClose').addEventListener('click', () => mobileNav.classList.remove('open'));
+mobileNav.addEventListener('click', (e) => { if (e.target === mobileNav) mobileNav.classList.remove('open'); });
+mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+
+/* ---------------- Search button ---------------- */
+document.getElementById('searchBtn').addEventListener('click', () => { location.hash = '#/search/'; });
+
+/* ---------------- Realtime: refresh counts across tabs ---------------- */
+sb.auth.onAuthStateChange(() => { refreshCounts(); });
+document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshCounts(); });
+
+})();
+</script>
+</body>
+</html>
